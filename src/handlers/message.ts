@@ -92,15 +92,6 @@ export default function messageHandler(sessionId: string, event: BaileysEventEmi
               },
             },
           });
-          await tx.message.create({
-            select: { pkId: true },
-            data: {
-              ...transformPrisma(data),
-              id: data.key.id!,
-              remoteJid: data.key.remoteJid!,
-              sessionId,
-            },
-          });
         });
       } catch (e) {
         logger.error(e, 'An error occured during message update');
